@@ -30,8 +30,26 @@ public class ProgrammingLanguageManager implements ProgrammingLanguageService {
 	}
 
 	@Override
-	public ProgrammingLanguage create(ProgrammingLanguage programmingLanguage) throws Exception {
-		return programmingLanguageRepository.create(programmingLanguage);
+	public void create(ProgrammingLanguage programmingLanguage) throws Exception {
+		if (programmingLanguage.getName().isEmpty()) {
+			throw new Exception("Programming Language name can not be empty.");
+		}
+		for (ProgrammingLanguage programmingLanguages : getAll()) {
+			if (programmingLanguages.getId() == programmingLanguage.getId()) {
+				throw new Exception("Programming Language name can not be repeated.");
+			}
+		}
+		programmingLanguageRepository.create(programmingLanguage);
+	}
+	
+	@Override
+	public ProgrammingLanguage update(ProgrammingLanguage programmingLanguage) throws Exception {
+		return programmingLanguageRepository.update(programmingLanguage);
+	}
+
+	@Override
+	public ProgrammingLanguage delete(int id) throws Exception {
+		return programmingLanguageRepository.delete(id);
 	}
 
 }
