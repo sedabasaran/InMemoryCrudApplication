@@ -21,8 +21,17 @@ public class ProgrammingLanguageManager implements ProgrammingLanguageService {
 
 	@Override
 	public List<ProgrammingLanguage> getAll() {
-		// TODO Auto-generated method stub
 		return programmingLanguageRepository.getAll();
+	}
+
+	@Override
+	public ProgrammingLanguage getById(int id) throws Exception {
+		return programmingLanguageRepository.getById(id);
+	}
+
+	@Override
+	public ProgrammingLanguage create(ProgrammingLanguage programmingLanguage) throws Exception {
+		return programmingLanguageRepository.create(programmingLanguage);
 	}
 
 }

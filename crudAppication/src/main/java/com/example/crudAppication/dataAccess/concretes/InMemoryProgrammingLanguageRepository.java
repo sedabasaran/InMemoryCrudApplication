@@ -15,7 +15,6 @@ public class InMemoryProgrammingLanguageRepository implements ProgrammingLanguag
 
 	@Override
 	public List<ProgrammingLanguage> getAll() {
-		// TODO Auto-generated method stub
 		return programmingLanguages;
 	}
 
@@ -28,6 +27,22 @@ public class InMemoryProgrammingLanguageRepository implements ProgrammingLanguag
 		programmingLanguages.add(new ProgrammingLanguage(4, "JavaScript"));
 		programmingLanguages.add(new ProgrammingLanguage(5, "Node.js"));
 
+	}
+
+	@Override
+	public ProgrammingLanguage getById(int id) throws Exception {
+		for (ProgrammingLanguage programmingLanguage : programmingLanguages) {
+			if (programmingLanguage.getId() == id)
+				return programmingLanguage;
+
+		}
+		throw new Exception("kayit bulunamadi");
+
+	}
+
+	@Override
+	public ProgrammingLanguage create(ProgrammingLanguage programmingLanguage) throws Exception {
+		return programmingLanguage;
 	}
 
 }
